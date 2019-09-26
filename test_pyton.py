@@ -27,14 +27,14 @@ class UntitledTestCase(unittest.TestCase):
         driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Operators'])[1]/following::button[1]").click()
         driver.find_element_by_name("email").click()
         driver.find_element_by_name("email").clear()
-        driver.find_element_by_name("email").send_keys("111+1@1111.11")
+        driver.find_element_by_name("email").send_keys("111+7@11111.11")
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("111111111")
         driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Role'])[1]/following::div[4]").click()
         driver.find_element_by_xpath("//div[@id='react-select-5-option-1']").click()
         driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Broker Admin'])[2]/following::button[1]").click()
-        driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='BROKER_ADMIN'])[11]/following::div[2]").click()
-        driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='ro'])[1]/following::button[1]").click()
+
+
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
