@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pytest
-from rpapp import RPApp
+from fixture.rpapp import RPApp
 
 
 @pytest.fixture()
