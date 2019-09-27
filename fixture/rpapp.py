@@ -1,10 +1,12 @@
 from selenium import webdriver
+from fixture.session import SessionHelper
 
 
 class RPApp:
     def __init__(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
+        self.session = SessionHelper(self)
 
     def register_person(self, email):
         driver = self.driver
@@ -34,14 +36,6 @@ class RPApp:
         driver.find_element_by_id("react-select-5-option-0").click()
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='RUS'])[1]/following::button[1]").click()
-
-    def login(self):
-        driver = self.driver
-        driver.find_element_by_name("login").clear()
-        driver.find_element_by_name("login").send_keys("root")
-        driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys("root")
-        driver.find_element_by_xpath("//button[@type='submit']").click()
 
     def open_bro0(self):
         driver = self.driver
