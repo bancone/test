@@ -7,6 +7,7 @@ from fixture.register_person import RegisterP
 from fixture.create_SOW import CreateSOW
 from fixture.create_test import CreateT
 
+
 class RPApp:
     def __init__(self):
         self.driver = webdriver.Firefox()
