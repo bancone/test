@@ -1,8 +1,6 @@
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
 from fixture.session import SessionHelper
 from fixture.create_identity_docs import CreateID
-
 
 
 class RPApp:
@@ -11,7 +9,6 @@ class RPApp:
         self.driver.implicitly_wait(30)
         self.session = SessionHelper(self)
         self.create_identity_docs = CreateID(self)
-
 
     def register_person(self, email):
         driver = self.driver
