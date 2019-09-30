@@ -3,14 +3,13 @@ import time
 import os
 
 
-class CreateID:
+class CreateS:
 
     def __init__(self, rpapp):
         self.rpapp = rpapp
 
     def create_docs(self):
         driver = self.rpapp.driver
-        driver.set_window_size(1920, 1080)
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='ti'])[1]/following::button[6]").click()
         driver.find_element_by_xpath(
@@ -20,7 +19,7 @@ class CreateID:
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Document Type'])[1]/following::div[3]").click()
         driver.implicitly_wait(20)
-        driver.find_element_by_id("react-select-7-option-2").click()
+        driver.find_element_by_id("react-select-7-option-4").click()
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='File'])[1]/following::div[1]").click()
         driver.find_element_by_xpath(

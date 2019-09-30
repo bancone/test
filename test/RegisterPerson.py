@@ -14,6 +14,15 @@ def rpapp(request):
 #    rpapp.session.login()
 #    rpapp.register_person(email="s.pobedinskiy+19092717@iconic.vc")
 
-def test_create_identity_docs(rpapp):
+#def test_create_identity_docs(rpapp):
+ #   rpapp.session.login()
+  #  rpapp.create_identity_docs.create_docs()
+
+#def test_create_address_bill(rpapp):
+#    rpapp.session.login()
+#    rpapp.create_address_bill.create_docs()
+
+def test_create_selfie(rpapp):
     rpapp.session.login()
-    rpapp.create_identity_docs.create_docs()
+    rpapp.create_selfie.create_docs()
+    rpapp.session.logout()
