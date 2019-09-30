@@ -5,7 +5,7 @@ class RegisterP:
     def __init__(self, rpapp):
         self.rpapp = rpapp
 
-    def register_person(self, email):
+    def create_docs(self, email):
         driver = self.rpapp.driver
         # Open client page
         driver.find_element_by_xpath(

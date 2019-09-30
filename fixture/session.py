@@ -17,6 +17,7 @@ class SessionHelper:
     def open_bro0(self):
         driver = self.rpapp.driver
         driver.get("http://br0-admin.test7.iconic.local:81/login")
+        driver.set_window_size(1920, 1080)
 
     def logout(self):
         driver = self.rpapp.driver

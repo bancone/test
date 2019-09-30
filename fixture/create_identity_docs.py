@@ -10,7 +10,6 @@ class CreateID:
 
     def create_docs(self):
         driver = self.rpapp.driver
-        driver.set_window_size(1920, 1080)
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='ti'])[1]/following::button[6]").click()
         driver.find_element_by_xpath(
