@@ -12,7 +12,7 @@ def rpapp(request):
 
 def test_register_person(rpapp):
     rpapp.session.login()
-    rpapp.register_person.create_docs(email="s.pobedinskiy+1909304@iconic.vc")
+    rpapp.register_person.create_docs(email="s.pobedinskiy+1910016@iconic.vc")
 
 
 def test_create_identity_docs(rpapp):

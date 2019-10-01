@@ -6,6 +6,7 @@ from fixture.create_selfie import CreateS
 from fixture.register_person import RegisterP
 from fixture.create_SOW import CreateSOW
 from fixture.create_test import CreateT
+from fixture.create_account import CreateAcc
 
 
 class RPApp:
@@ -19,6 +20,7 @@ class RPApp:
         self.register_person = RegisterP(self)
         self.create_SOW = CreateSOW(self)
         self.create_test = CreateT(self)
+        self.create_account = CreateAcc(self)
 
     def destroy(self):
         self.driver.quit()
