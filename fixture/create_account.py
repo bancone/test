@@ -6,15 +6,40 @@ class CreateAcc:
     def __init__(self, rpapp):
         self.rpapp = rpapp
 
-    def login_bro(self, email):
+    def login_bro(self, email, password):
         driver = self.rpapp.driver
         self.open_broker()
         self.open_broker_signin()
         self.fill_field(email)
+        self.first_fill_registration()
+        self.auth_to_gmail()
+        driver.switch_to.window(driver.window_handles[1])
+        self.set_password(password)
+        self.auth(email, password)
+
+    def auth(self, email, password):
+        driver = self.rpapp.driver
+        driver.find_element_by_name("email").clear()
+        driver.find_element_by_name("email").send_keys(email)
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("%s" % password)
         driver.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='Russian Federation'])[1]/following::span[2]").click()
+            "(.//*[normalize-space(text()) and normalize-space(.)='I forgot password'])[1]/following::button[1]") \
+            .click()
         driver.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='privacy agreement'])[1]/following::span[1]").click()
+            "(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::div[2]").click()
+
+    def set_password(self, password):
+        driver = self.rpapp.driver
+        driver.find_element_by_name("password").click()
+        driver.find_element_by_name("password").send_keys("%s" % password)
+        driver.find_element_by_name("passwordConfirm").click()
+        driver.find_element_by_name("passwordConfirm").send_keys("%s" % password)
+        driver.find_element_by_xpath(
+            "(.//*[normalize-space(text()) and normalize-space(.)='Confirm Password'])[1]/following::button[1]").click()
+
+    def auth_to_gmail(self):
+        driver = self.rpapp.driver
         driver.get("https://mail.google.com/mail/u/0/#inbox")
         driver.find_element_by_id("identifierId").clear()
         driver.find_element_by_id("identifierId").send_keys("s.pobedinskiy@iconic.vc")
@@ -25,29 +50,20 @@ class CreateAcc:
         driver.find_element_by_name("password").send_keys("1234567q-")
         driver.find_element_by_xpath(
             u"(.//*[normalize-space(text()) and normalize-space(.)="
-            u"'Слишком много неудачных попыток'])[1]/following::span[8]")\
+            u"'Слишком много неудачных попыток'])[1]/following::span[8]") \
             .click()
         time.sleep(2)
         time.sleep(3)
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='zubr.io Development'])[2]/following::span[2]").click()
         driver.find_element_by_link_text("VERIFY EMAIL").click()
-        driver.switch_to.window(driver.window_handles[1])
-        driver.find_element_by_name("password").click()
-        driver.find_element_by_name("password").send_keys("1234qwer")
-        driver.find_element_by_name("passwordConfirm").click()
-        driver.find_element_by_name("passwordConfirm").send_keys("1234qwer")
+
+    def first_fill_registration(self):
+        driver = self.rpapp.driver
         driver.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='Confirm Password'])[1]/following::button[1]").click()
-        driver.find_element_by_name("email").clear()
-        driver.find_element_by_name("email").send_keys(email)
-        driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys("1234qwer")
+            "(.//*[normalize-space(text()) and normalize-space(.)='Russian Federation'])[1]/following::span[2]").click()
         driver.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='I forgot password'])[1]/following::button[1]")\
-            .click()
-        driver.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::div[2]").click()
+            "(.//*[normalize-space(text()) and normalize-space(.)='privacy agreement'])[1]/following::span[1]").click()
 
     def fill_field(self, email):
         driver = self.rpapp.driver
@@ -68,29 +84,13 @@ class CreateAcc:
         driver.get("http://test7.iconic.local/")
         driver.set_window_size(1920, 1080)
 
-    def test(self):
+    def test(self, password):
         driver = self.rpapp.driver
-        driver.get("https://mail.google.com/mail/u/0/#inbox")
-        driver.find_element_by_id("identifierId").clear()
-        driver.find_element_by_id("identifierId").send_keys("s.pobedinskiy@iconic.vc")
-        driver.find_element_by_xpath(
-            u"(.//*[normalize-space(text()) and normalize-space(.)='Подробнее…'])[1]/following::span[2]").click()
-        time.sleep(1)
-        driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys("1234567q-")
-        driver.find_element_by_xpath(
-            u"(.//*[normalize-space(text()) and normalize-space(.)="
-            u"'Слишком много неудачных попыток'])[1]/following::span[8]")\
-            .click()
-        time.sleep(2)
-        time.sleep(3)
-        driver.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='zubr.io Development'])[2]/following::span[2]").click()
-        driver.find_element_by_link_text("VERIFY EMAIL").click()
+        self.auth_to_gmail()
         driver.switch_to.window(driver.window_handles[1])
         driver.find_element_by_name("password").click()
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Please set a password.'])"
-            "[1]/following::input[1]").send_keys("1234qwer")
+            "[1]/following::input[1]").send_keys("%s" % password)
         driver.find_element_by_name("passwordConfirm").click()
-        driver.find_element_by_name("passwordConfirm").send_keys("1234qwer")
+        driver.find_element_by_name("passwordConfirm").send_keys("%s" % password)

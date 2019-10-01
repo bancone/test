@@ -11,5 +11,4 @@ def rpapp(request):
 
 
 def test_create_account(rpapp):
-    rpapp.create_account.login_bro(email="s.pobedinskiy+19100124@iconic.vc")
-    #rpapp.create_account.test()
+    rpapp.create_account.login_bro(email="s.pobedinskiy+19100124@iconic.vc", password="1234qwer")
