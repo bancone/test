@@ -12,7 +12,9 @@ def rpapp(request):
 
 def test_register_person(rpapp):
     rpapp.session.login()
-    rpapp.register_person.create_docs(email="s.pobedinskiy+1910016@iconic.vc")
+    rpapp.register_person.create_docs(email="s.pobedinskiy+2002251@iconic.vc")
+    rpapp.create_account.auth_to_gmail()
+    rpapp.create_account.set_password(password="1234567890qwerty!")
 
 
 def test_create_identity_docs(rpapp):
@@ -38,3 +40,8 @@ def test_create_SOW(rpapp):
 def test_create_test(rpapp):
     rpapp.session.login()
     rpapp.create_test.create_docs()
+
+
+#def test_approve_documents(rpapp):
+#    rpapp.session.login_ex()
+#    rpapp.approve_documents.approve_documents()

@@ -1,3 +1,4 @@
+import time
 
 
 class RegisterP:
@@ -31,5 +32,6 @@ class RegisterP:
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Residency'])[1]/following::div[3]").click()
         driver.find_element_by_id("react-select-5-option-0").click()
-        driver.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='RUS'])[1]/following::button[1]").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        time.sleep(2)

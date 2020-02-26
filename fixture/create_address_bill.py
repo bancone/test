@@ -25,6 +25,7 @@ class CreateAB:
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='File'])[1]/preceding::input[1]").\
             send_keys(os.getcwd() + "/111.png")
+        driver.send_keys(os.close())
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='File'])[1]/following::button[1]").click()
         driver.find_element_by_xpath(

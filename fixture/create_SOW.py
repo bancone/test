@@ -19,6 +19,8 @@ class CreateSOW:
             "(.//*[normalize-space(text()) and normalize-space(.)='Crypto Trading'])[1]/following::div[1]").click()
         driver.find_element_by_name("comment").clear()
         driver.find_element_by_name("comment").send_keys("123")
+        time.sleep(2)
         driver.find_element_by_xpath('//button[text()="Create Source of Wealth Document"]').click()
+        time.sleep(2)
         driver.find_element_by_xpath(
             "//a[contains(@href, '/client')]").click()

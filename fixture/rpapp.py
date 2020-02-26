@@ -7,7 +7,8 @@ from fixture.register_person import RegisterP
 from fixture.create_SOW import CreateSOW
 from fixture.create_test import CreateT
 from fixture.create_account import CreateAcc
-
+from fixture.approve_documents import ApproveDocs
+from fixture.create_qt import Createqt
 
 class RPApp:
     def __init__(self):
@@ -21,6 +22,8 @@ class RPApp:
         self.create_SOW = CreateSOW(self)
         self.create_test = CreateT(self)
         self.create_account = CreateAcc(self)
+        self.approve_documents = ApproveDocs(self)
+        self.create_qt = Createqt(self)
 
     def destroy(self):
         self.driver.quit()
